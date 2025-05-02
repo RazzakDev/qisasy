@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 export const appEnvValidationSchema = z.object({
   host: z.string(),
-  port: z.number(),
+  port: z.coerce.number().int(),
   database: z.string(),
   username: z.string(),
   password: z.string(),
@@ -18,7 +18,8 @@ export const appConfig = registerAs('app', () => {
     password: process.env.DATABASE_PASSWORD!,
   };
 
-  const parsed = appEnvValidationSchema.parse(dbConfig);
+  console.log(dbConfig);
 
+  const parsed = appEnvValidationSchema.parse(dbConfig);
   return parsed;
 });

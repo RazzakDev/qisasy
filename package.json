@@ -30,7 +30,7 @@
     "compression": "^1.8.0",
     "helmet": "^8.1.0",
     "i18next": "^25.0.2",
-    "kysely": "^0.28.2",
+    "kysely": "^0.27.0",
     "kysely-codegen": "^0.18.3",
     "nestjs-kysely": "^1.2.0",
     "nestjs-zod": "^4.3.1",
