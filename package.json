@@ -2,7 +2,7 @@
   "name": "qisasy",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "","type": "module",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
