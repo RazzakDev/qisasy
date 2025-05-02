@@ -1,0 +1,46 @@
+generator kysely {
+  provider = "prisma-kysely"
+
+  output       = "../src/db"
+  fileName     = "types.ts"
+  enumFileName = "enums.ts"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  firstName String
+  lastName  String
+
+  status   USER_STATUS @default(ACTIVE)
+  username String      @unique
+  password String
+  hashedRt String?
+
+  roleId Int
+  Role   Role @relation(fields: [roleId], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  @@unique([firstName, lastName])
+  @@index([username])
+}
+
+model Role {
+  id Int @id @default(autoincrement())
+
+  name String
+  User User[]
+}
+
+enum USER_STATUS {
+  ACTIVE
+  NOT_ACTIVE
+}
